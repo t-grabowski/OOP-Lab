@@ -16,6 +16,7 @@ while (true) {
 		messageIsError = false;
 		Console.ResetColor();
 	}
+	Console.WriteLine($"room: {room.Id}, show: {show.Title}, start time: {showing.StartTime}, end time: {showing.EndTime}");
 	showing.Print();
 	Console.Write("Choose a seat: ");
 	if (!int.TryParse(Console.ReadLine(), out var input)) {
