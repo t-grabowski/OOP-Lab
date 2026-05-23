@@ -5,11 +5,10 @@ namespace Lab2;
 public sealed class Showing {
 	public Show Show { get; set; }
 	public DateTime StartTime { get; set; }
-	public TimeSpan Duration { get; set; }
 	public Room Room { get; set; }
 	public Dictionary<Seat, Ticket> Reservations { get; set; }
 
-	public DateTime EndTime => StartTime + Duration;
+	public DateTime EndTime => StartTime + Show.Duration;
 
 	public ErrorOr<Ticket> ReserveSeat(Customer customer, Seat seat) {
 		var isReserved = IsSeatReserved(seat);
@@ -34,11 +33,10 @@ public sealed class Showing {
 		return Reservations.TryGetValue(seat, out _);
 	}
 
-	public Showing(Show show, DateTime startTime, TimeSpan duration, Room room) {
+	public Showing(Show show, DateTime startTime, Room room) {
 		Reservations = [];
 		Show = show;
 		StartTime = startTime;
-		Duration = duration;
 		Room = room;
 	}
 
