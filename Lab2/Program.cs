@@ -1,8 +1,8 @@
 ﻿using Lab2;
 
 var room = new Room(1, 100, 10);
-var show = new Show("Test1", ShowType.Movie);
-var showing = new Showing(show, DateTime.Today.AddDays(1).AddHours(17), TimeSpan.FromHours(2), room);
+var show = new Show("Test1", ShowType.Movie, TimeSpan.FromHours(2));
+var showing = new Showing(show, DateTime.Today.AddDays(1).AddHours(17), room);
 var customer = new Customer("test@example.com");
 
 string? message = null;

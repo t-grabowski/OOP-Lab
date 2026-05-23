@@ -8,10 +8,12 @@ public enum ShowType {
 public sealed class Show {
 	public string Title { get; set; }
 	public ShowType Type { get; set; }
+	public TimeSpan Duration { get; set; }
 
-	public Show(string title, ShowType type) {
+	public Show(string title, ShowType type, TimeSpan duration) {
 		Title = title;
 		Type = type;
+		Duration = duration;
 	}
 }
 
