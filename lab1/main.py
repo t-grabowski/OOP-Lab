@@ -104,6 +104,7 @@ if (not user_input.isdecimal()):
 	print(InvalidInputErr)
 	exit(1)
 
+
 match int(user_input):
 	case 1:
 		calculator()
