@@ -53,7 +53,6 @@ public static class ShowingTui {
 			ConsoleColor reservedColor = ConsoleColor.Red,
 			ConsoleColor freeColor = ConsoleColor.Green) {
 
-			var rows = (int)Math.Ceiling((double)showing.Room.SeatAmount / showing.Room.SeatColumns);
 			var cellLength = Math.Max(showing.Room.SeatAmount.ToString().Length, 1);
 
 			const char screenPadChar = '-';
