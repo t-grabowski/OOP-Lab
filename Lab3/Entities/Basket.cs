@@ -73,7 +73,7 @@ public sealed class Basket : Entity<Guid> {
 				.Sum(d => d.ApplyDiscount(this, p))
 			);
 
-		return OriginalTotalPrice - deduction.Dump("deduction");
+		return OriginalTotalPrice - deduction;
 	}
 
 }

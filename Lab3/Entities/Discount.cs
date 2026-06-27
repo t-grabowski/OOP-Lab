@@ -29,7 +29,7 @@ public sealed class PercentDiscount(int percent) : Discount {
 	public int Value { get; set; } = percent;
 
 	public override float ApplyDiscount(Basket basket, Product product) =>
-		(product.OriginalPrice * (Value / 100f)).Dump("percent off discount");
+		(product.OriginalPrice * (Value / 100f));
 
 	// for EF
 	private PercentDiscount() : this(0) {}

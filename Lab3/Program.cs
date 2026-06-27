@@ -16,7 +16,12 @@ var basket = await db.Baskets
 		.ThenInclude(p => p.Discounts)
 	.FirstOrDefaultAsync();
 
-basket.Dump();
+if (basket is null) {
+	throw new Exception("basket is null");
+}
+
+basket.Print();
+
 
 return;
 
@@ -26,14 +31,23 @@ public static class Extensions {
 			new("Test1", 50, [new PercentDiscount(10)]),
 			new("Test2", 10, [new TwoForOneDiscount()]),
 		];
-		await db.Products.AddRangeAsync(products);
 
 		var basket = new Basket();
 		basket.AddProduct(products[0]);
 		basket.AddProduct(products[1], 2);
 
 		await db.Baskets.AddAsync(basket);
-
 		await db.SaveChangesAsync();
+	}
+
+	public static void Print(this Basket basket) {
+		Console.WriteLine("===========");
+		Console.WriteLine("Produkty:");
+		foreach (var product in basket.Products) {
+			Console.WriteLine($"- {product.Product.Name} | {product.Product.OriginalPrice} x {product.Quantity}");
+		}
+		Console.WriteLine("-----------");
+		Console.WriteLine($"Cena przed zastosowaniem zniżek: {basket.OriginalTotalPrice}");
+		Console.WriteLine($"Cena po zastosowaniu zniżek: {basket.DiscountedTotalPrice}");
 	}
 }
